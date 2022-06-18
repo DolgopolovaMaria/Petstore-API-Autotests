@@ -2,7 +2,7 @@ package tests;
 
 import io.qameta.allure.*;
 import models.ApiResponse;
-import models.User;
+import models.user.User;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -11,11 +11,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Feature("User")
 @DisplayName("Users API tests")
 public class UsersTests extends TestBase {
 
     @DisplayName("Get user by username")
-    @Feature("User")
     @Story("Get user")
     @Link(value = serviceName, url = serviceLink)
     @Test
@@ -29,7 +29,6 @@ public class UsersTests extends TestBase {
     }
 
     @DisplayName("Create single user")
-    @Feature("User")
     @Story("Create users")
     @Link(value = serviceName, url = serviceLink)
     @Test
@@ -49,7 +48,6 @@ public class UsersTests extends TestBase {
     }
 
     @DisplayName("Create users with array")
-    @Feature("User")
     @Story("Create users")
     @Link(value = serviceName, url = serviceLink)
     @ParameterizedTest(name = "({0} items)")
@@ -79,7 +77,6 @@ public class UsersTests extends TestBase {
     }
 
     @DisplayName("Delete user by username")
-    @Feature("User")
     @Story("Delete user")
     @Link(value = serviceName, url = serviceLink)
     @Test
@@ -100,7 +97,6 @@ public class UsersTests extends TestBase {
     }
 
     @DisplayName("Update user by username")
-    @Feature("User")
     @Story("Update user")
     @Link(value = serviceName, url = serviceLink)
     @Test

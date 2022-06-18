@@ -1,11 +1,11 @@
 package tests;
 
 import models.ApiResponse;
-import models.PetStatus;
+import models.pet.PetStatus;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Link;
 import io.qameta.allure.Story;
-import models.Pet;
+import models.pet.Pet;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,10 +17,10 @@ import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Feature("Pet")
 @DisplayName("Pets API tests")
 public class PetsTests extends TestBase {
     @DisplayName("Create pet")
-    @Feature("Pet")
     @Story("Create pet")
     @Link(value = serviceName, url = serviceLink)
     @Test
@@ -36,7 +36,6 @@ public class PetsTests extends TestBase {
     }
 
     @DisplayName("Get pet by id")
-    @Feature("Pet")
     @Story("Get pets")
     @Link(value = serviceName, url = serviceLink)
     @Test
@@ -49,7 +48,6 @@ public class PetsTests extends TestBase {
     }
 
     @DisplayName("Get pets by status")
-    @Feature("Pet")
     @Story("Get pets")
     @Link(value = serviceName, url = serviceLink)
     @ParameterizedTest(name = "(status = {0})")
@@ -71,7 +69,6 @@ public class PetsTests extends TestBase {
     }
 
     @DisplayName("Delete user by username")
-    @Feature("Pet")
     @Story("Delete pet")
     @Link(value = serviceName, url = serviceLink)
     @Test

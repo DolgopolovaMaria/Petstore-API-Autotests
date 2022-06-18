@@ -2,11 +2,14 @@ package tests;
 
 import helpers.DataGenerator;
 import io.qameta.allure.Step;
-import models.Pet;
-import models.PetStatus;
-import models.User;
+import models.order.Order;
+import models.pet.Pet;
+import models.pet.PetStatus;
+import models.user.User;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.extension.ExtensionContext;
 import tests.steps.PetsApiSteps;
+import tests.steps.StoreApiSteps;
 import tests.steps.UserApiSteps;
 
 public class TestBase {
@@ -18,6 +21,8 @@ public class TestBase {
     protected UserApiSteps userSteps = new UserApiSteps();
 
     protected PetsApiSteps petSteps = new PetsApiSteps();
+
+    protected StoreApiSteps storeSteps = new StoreApiSteps();
 
     @BeforeAll
     static void setUp() {
@@ -42,5 +47,13 @@ public class TestBase {
         Pet pet = generator.getPetWithStatus(value);
         petSteps.createPet(pet);
         return pet;
+    }
+
+    @Step("Prepare test data: create order")
+    Order createOrder(){
+        Pet pet = createPet();
+        Order order = generator.getRandomOrder(pet.getId());
+        storeSteps.createOrder(order);
+        return order;
     }
 }

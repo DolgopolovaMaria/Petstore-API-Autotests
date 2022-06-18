@@ -1,11 +1,11 @@
 package tests.steps;
 
 import models.ApiResponse;
-import models.PetStatus;
+import models.pet.PetStatus;
 import io.qameta.allure.Step;
 import io.restassured.specification.ResponseSpecification;
-import models.Pet;
-import models.Tag;
+import models.pet.Pet;
+import models.pet.Tag;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;

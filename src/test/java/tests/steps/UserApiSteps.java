@@ -3,12 +3,10 @@ package tests.steps;
 import io.qameta.allure.Step;
 import io.restassured.specification.ResponseSpecification;
 import models.ApiResponse;
-import models.Pet;
-import models.User;
+import models.user.User;
 
 import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.responseSpecification;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static specs.Specs.*;
 
@@ -91,6 +89,8 @@ public class UserApiSteps {
                 .extract().as(ApiResponse.class);
         return apiResponse;
     }
+
+
 
     @Step("Check json data: {description}")
     public void compareData(User first, User second, String description){

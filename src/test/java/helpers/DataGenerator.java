@@ -1,8 +1,17 @@
 package helpers;
 
 import com.github.javafaker.Faker;
-import models.*;
+import models.order.Order;
+import models.order.OrderStatus;
+import models.pet.Category;
+import models.pet.Pet;
+import models.pet.PetStatus;
+import models.pet.Tag;
+import models.user.User;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 public class DataGenerator {
@@ -12,7 +21,9 @@ public class DataGenerator {
     private final String[] categories = {"Cats", "Dogs", "Hamsters", "Parrots", "Turtles", "Fish", "Others"},
                             tags = {"vip", "delivery", "vet passport", "discount"};
 
-    private final PetStatus[] statuses = PetStatus.values();
+    private final PetStatus[] petStatuses = PetStatus.values();
+
+    private final OrderStatus[] orderStatuses = OrderStatus.values();
 
     public String getFirstName() {
         return faker.name().firstName();
@@ -76,9 +87,9 @@ public class DataGenerator {
         return new Category(id, name);
     }
 
-    public PetStatus getStatus(){
+    public PetStatus getPetStatus(){
         int id = random.nextInt(3);
-        PetStatus name = statuses[id];
+        PetStatus name = petStatuses[id];
         return name;
     }
 
@@ -88,7 +99,7 @@ public class DataGenerator {
         String name = faker.funnyName().name();
         String[] photoUrls = {};
         Tag[] tags = getTagsArray();
-        PetStatus status = getStatus();
+        PetStatus status = getPetStatus();
         return new Pet(id, category, name, photoUrls, tags, status);
     }
 
@@ -99,5 +110,36 @@ public class DataGenerator {
         String[] photoUrls = {};
         Tag[] tags = getTagsArray();
         return new Pet(id, category, name, photoUrls, tags, status);
+    }
+
+    public String getDate(){
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, +10);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'+0000'");
+        Date date = faker.date().between(new Date(), cal.getTime());
+        return formatter.format(date);
+    }
+
+    public int getQuantity(){
+        return 1+ random.nextInt(9);
+    }
+
+    public OrderStatus getOrderStatus(){
+        int id = random.nextInt(3);
+        OrderStatus name = orderStatuses[id];
+        return name;
+    }
+
+    public boolean getBool(){
+        return random.nextBoolean();
+    }
+
+    public Order getRandomOrder(long petId){
+        long id = getId();
+        int quantity = getQuantity();
+        String shipDate = getDate();
+        OrderStatus status = getOrderStatus();
+        boolean complete = getBool();
+        return new Order(id, petId, quantity, shipDate, status, complete);
     }
 }

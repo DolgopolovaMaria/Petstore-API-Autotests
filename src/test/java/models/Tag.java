@@ -8,4 +8,13 @@ import lombok.Data;
 public class Tag {
     private Integer id;
     private String name;
+
+    public Tag(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Tag() {
+    }
+
 }

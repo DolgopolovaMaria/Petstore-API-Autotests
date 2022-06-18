@@ -3,6 +3,8 @@ package models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
+import java.util.Objects;
+
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
@@ -25,4 +27,15 @@ public class User {
         this.phone = phone;
         this.userStatus = userStatus;
     }
+
+    public User() {
+    }
+
+    //@Override
+    //public boolean equals(Object o) {
+       // if (this == o) return true;
+      //  if (o == null || getClass() != o.getClass()) return false;
+      //  User user = (User) o;
+      //  return Objects.equals(id, user.id) && Objects.equals(username, user.username) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(phone, user.phone) && Objects.equals(userStatus, user.userStatus);
+  //  }
 }

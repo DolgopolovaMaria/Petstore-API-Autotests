@@ -20,4 +20,8 @@ public class Specs {
     public static ResponseSpecification responseSpec = new ResponseSpecBuilder()
             .expectStatusCode(200)
             .build();
+
+    public static ResponseSpecification responseNotFoundSpec = new ResponseSpecBuilder()
+            .expectStatusCode(404)
+            .build();
 }

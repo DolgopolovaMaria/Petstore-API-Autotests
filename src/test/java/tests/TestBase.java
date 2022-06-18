@@ -1,10 +1,9 @@
 package tests;
 
-import com.codeborne.selenide.logevents.SelenideLogger;
 import helpers.DataGenerator;
 import io.qameta.allure.Step;
-import io.qameta.allure.selenide.AllureSelenide;
 import models.Pet;
+import models.PetStatus;
 import models.User;
 import org.junit.jupiter.api.BeforeAll;
 import tests.steps.PetsApiSteps;
@@ -34,6 +33,13 @@ public class TestBase {
     @Step("Prepare test data: create pet")
     Pet createPet(){
         Pet pet = generator.getRandomPet();
+        petSteps.createPet(pet);
+        return pet;
+    }
+
+    @Step("Prepare test data: create pet with status {0}")
+    Pet createPetWithStatus(PetStatus value){
+        Pet pet = generator.getPetWithStatus(value);
         petSteps.createPet(pet);
         return pet;
     }

@@ -3,10 +3,13 @@ package tests.steps;
 import io.qameta.allure.Step;
 import io.restassured.specification.ResponseSpecification;
 import models.ApiResponse;
+import models.Pet;
 import models.User;
 
+import static io.qameta.allure.Allure.step;
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.responseSpecification;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static specs.Specs.*;
 
 public class UserApiSteps {
@@ -87,5 +90,33 @@ public class UserApiSteps {
                 .spec(responseSpec)
                 .extract().as(ApiResponse.class);
         return apiResponse;
+    }
+
+    @Step("Check json data: {description}")
+    public void compareData(User first, User second, String description){
+        step("id", () -> {
+            assertEquals(first.getId(), second.getId());
+        });
+        step("username", () -> {
+            assertEquals(first.getUsername(), second.getUsername());
+        });
+        step("firstName", () -> {
+            assertEquals(first.getFirstName(), second.getFirstName());
+        });
+        step("lastName", () -> {
+            assertEquals(first.getLastName(), second.getLastName());
+        });
+        step("email", () -> {
+            assertEquals(first.getEmail(), second.getEmail());
+        });
+        step("password", () -> {
+            assertEquals(first.getPassword(), second.getPassword());
+        });
+        step("phone", () -> {
+            assertEquals(first.getPhone(), second.getPhone());
+        });
+        step("userStatus", () -> {
+            assertEquals(first.getUserStatus(), second.getUserStatus());
+        });
     }
 }

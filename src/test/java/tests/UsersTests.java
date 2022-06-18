@@ -7,7 +7,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import tests.steps.UserApiSteps;
 
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -26,32 +25,7 @@ public class UsersTests extends TestBase {
 
         User returnedUser = userSteps.getUser(user.getUsername(), true);
 
-        step("Check returned data", () -> {
-            step("id", () -> {
-                assertEquals(user.getId(), returnedUser.getId());
-            });
-            step("username", () -> {
-                assertEquals(user.getUsername(), returnedUser.getUsername());
-            });
-            step("firstName", () -> {
-                assertEquals(user.getFirstName(), returnedUser.getFirstName());
-            });
-            step("lastName", () -> {
-                assertEquals(user.getLastName(), returnedUser.getLastName());
-            });
-            step("email", () -> {
-                assertEquals(user.getEmail(), returnedUser.getEmail());
-            });
-            step("password", () -> {
-                assertEquals(user.getPassword(), returnedUser.getPassword());
-            });
-            step("phone", () -> {
-                assertEquals(user.getPhone(), returnedUser.getPhone());
-            });
-            step("userStatus", () -> {
-                assertEquals(user.getUserStatus(), returnedUser.getUserStatus());
-            });
-        });
+        userSteps.compareData(user, returnedUser, "response data is correct");
     }
 
     @DisplayName("Create single user")
@@ -97,7 +71,7 @@ public class UsersTests extends TestBase {
             assertEquals(200, apiResponse.getCode());
         });
 
-        step("Check that users exists", () -> {
+        step("Check that users exist", () -> {
             for (int i = 0; i < value; i++){
                 userSteps.getUser(users[i].getUsername(), true);
             }
@@ -142,33 +116,8 @@ public class UsersTests extends TestBase {
             assertEquals(Integer.toString(user.getId()), apiResponse.getMessage());
         });
 
-        step("Check new user data", () -> {
-            User returnedUser = userSteps.getUser(user.getUsername(), true);
+        User returnedUser = userSteps.getUser(user.getUsername(), true);
 
-            step("id", () -> {
-                assertEquals(user.getId(), returnedUser.getId());
-            });
-            step("username", () -> {
-                assertEquals(user.getUsername(), returnedUser.getUsername());
-            });
-            step("firstName", () -> {
-                assertEquals(user.getFirstName(), returnedUser.getFirstName());
-            });
-            step("lastName", () -> {
-                assertEquals(user.getLastName(), returnedUser.getLastName());
-            });
-            step("email", () -> {
-                assertEquals(user.getEmail(), returnedUser.getEmail());
-            });
-            step("password", () -> {
-                assertEquals(user.getPassword(), returnedUser.getPassword());
-            });
-            step("phone", () -> {
-                assertEquals(user.getPhone(), returnedUser.getPhone());
-            });
-            step("userStatus", () -> {
-                assertEquals(user.getUserStatus(), returnedUser.getUserStatus());
-            });
-        });
+        userSteps.compareData(user, returnedUser, "user data is updated");
     }
 }

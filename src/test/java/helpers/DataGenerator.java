@@ -1,10 +1,7 @@
 package helpers;
 
 import com.github.javafaker.Faker;
-import models.Category;
-import models.Pet;
-import models.Tag;
-import models.User;
+import models.*;
 
 import java.util.Random;
 
@@ -13,8 +10,9 @@ public class DataGenerator {
     Random random = new Random();
 
     private final String[] categories = {"Cats", "Dogs", "Hamsters", "Parrots", "Turtles", "Fish", "Others"},
-        tags = {"vip", "delivery", "vet passport", "discount"},
-        statuses = {"available", "pending", "sold"};
+                            tags = {"vip", "delivery", "vet passport", "discount"};
+
+    private final PetStatus[] statuses = PetStatus.values();
 
     public String getFirstName() {
         return faker.name().firstName();
@@ -78,9 +76,9 @@ public class DataGenerator {
         return new Category(id, name);
     }
 
-    public String getStatus(){
+    public PetStatus getStatus(){
         int id = random.nextInt(3);
-        String name = statuses[id];
+        PetStatus name = statuses[id];
         return name;
     }
 
@@ -90,7 +88,16 @@ public class DataGenerator {
         String name = faker.funnyName().name();
         String[] photoUrls = {};
         Tag[] tags = getTagsArray();
-        String status = getStatus();
+        PetStatus status = getStatus();
+        return new Pet(id, category, name, photoUrls, tags, status);
+    }
+
+    public Pet getPetWithStatus(PetStatus status){
+        long id = getId();
+        Category category = getCategory();
+        String name = faker.funnyName().name();
+        String[] photoUrls = {};
+        Tag[] tags = getTagsArray();
         return new Pet(id, category, name, photoUrls, tags, status);
     }
 }

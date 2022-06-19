@@ -3,6 +3,13 @@
 
 :dog2: <a href="https://petstore.swagger.io/">Petstore</a> - приложение для практики REST-запросов. Этот сайт имитирует онлайн-зоомагазин, в котором можно работать с информацией о питомцах, заказах и пользователях.
 
+## :page_with_curl: Содержание:
+
+- <a href="#computer-технологический-стек">Технологический стек</a>
+- <a href="#clipboard-реализованные-проверки">Реализованные проверки</a>
+- <a href="#robot-запуск-тестов-в-jenkins">Запуск тестов в Jenkins</a>
+- <a href="#bar_chart-allure-отчет">Allure отчет</a>
+
 ## :computer: Технологический стек
 <p align="center">
 <img width="6%" title="Java" src="Images/Logos/Java.svg">

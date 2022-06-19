@@ -46,3 +46,20 @@
 <p align="center">
 <img title="Jenkins Job Run with parameters" src="Images/Screenshots/Jenkins.png">
 </p>
+
+## :bar_chart: Allure отчет
+После прогона тестов строится отчет:
+- Главная страница отчета
+<p align="center">
+<img title="Allure Overview Dashboard" src="Images/Screenshots/AllureOverview.png">
+</p>
+
+- Страница с тестами:
+<p align="center">
+<img title="Allure Test Page" src="Images/Screenshots/AllureTests.png">
+</p>
+
+- В отчете есть логи всех запросов и ответов:
+<p align="center">
+<img title="Allure Test Page" src="Images/Screenshots/AllureLog.png">
+</p>

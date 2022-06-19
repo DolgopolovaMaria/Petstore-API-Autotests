@@ -42,3 +42,27 @@ dependencies {
 tasks.withType(Test) {
     useJUnitPlatform()
 }
+
+task smoke(type: Test){
+    useJUnitPlatform{
+        includeTags "Smoke"
+    }
+}
+
+task pet_tests(type: Test){
+    useJUnitPlatform{
+        includeTags "Pet"
+    }
+}
+
+task user_tests(type: Test){
+    useJUnitPlatform{
+        includeTags "User"
+    }
+}
+
+task store_tests(type: Test){
+    useJUnitPlatform{
+        includeTags "Store"
+    }
+}

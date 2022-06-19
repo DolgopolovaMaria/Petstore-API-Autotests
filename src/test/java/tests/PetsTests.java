@@ -7,6 +7,7 @@ import io.qameta.allure.Link;
 import io.qameta.allure.Story;
 import models.pet.Pet;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -17,9 +18,11 @@ import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Tag("Pet")
 @Feature("Pet")
 @DisplayName("Pets API tests")
 public class PetsTests extends TestBase {
+    @Tag("Smoke")
     @DisplayName("Create pet")
     @Story("Create pet")
     @Link(value = serviceName, url = serviceLink)
@@ -35,6 +38,7 @@ public class PetsTests extends TestBase {
         });
     }
 
+    @Tag("Smoke")
     @DisplayName("Get pet by id")
     @Story("Get pets")
     @Link(value = serviceName, url = serviceLink)
@@ -68,7 +72,7 @@ public class PetsTests extends TestBase {
         });
     }
 
-    @DisplayName("Delete user by username")
+    @DisplayName("Delete pet by username")
     @Story("Delete pet")
     @Link(value = serviceName, url = serviceLink)
     @Test

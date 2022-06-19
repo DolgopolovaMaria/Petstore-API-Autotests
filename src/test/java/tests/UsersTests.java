@@ -4,6 +4,7 @@ import io.qameta.allure.*;
 import models.ApiResponse;
 import models.user.User;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,10 +12,11 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Tag("User")
 @Feature("User")
 @DisplayName("Users API tests")
 public class UsersTests extends TestBase {
-
+    @Tag("Smoke")
     @DisplayName("Get user by username")
     @Story("Get user")
     @Link(value = serviceName, url = serviceLink)
@@ -28,6 +30,7 @@ public class UsersTests extends TestBase {
         userSteps.compareData(user, returnedUser, "response data is correct");
     }
 
+    @Tag("Smoke")
     @DisplayName("Create single user")
     @Story("Create users")
     @Link(value = serviceName, url = serviceLink)

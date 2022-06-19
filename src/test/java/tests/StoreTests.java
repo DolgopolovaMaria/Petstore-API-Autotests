@@ -9,13 +9,17 @@ import models.order.Order;
 import models.pet.Pet;
 import models.pet.PetStatus;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@Tag("Store")
 @Feature("Store")
 @DisplayName("Store API tests")
 public class StoreTests extends TestBase {
+    @Tag("Smoke")
     @DisplayName("Create order")
     @Story("Create order")
     @Link(value = serviceName, url = serviceLink)
@@ -33,6 +37,7 @@ public class StoreTests extends TestBase {
         });
     }
 
+    @Tag("Smoke")
     @DisplayName("Get order by id")
     @Story("Get order")
     @Link(value = serviceName, url = serviceLink)

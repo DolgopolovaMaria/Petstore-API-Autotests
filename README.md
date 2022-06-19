@@ -35,8 +35,14 @@
   - Создание пользователей из массива <code>POST /user/createWithArray</code>
   - Редактирование пользователя <code>PUT /user/{username}</code>
   - Удаление пользователя <code>DELETE /user/{username}</code>
-- Магазин
+- Магазин:
   - Получение заказа по id <code>GET /store/order/{orderId}</code>
   - Создание заказа <code>POST /store/order</code>
   - Удаление заказа <code>DELETE /store/order/{orderId}</code>
   - Инвентаризация (получение статистики по статусам заказов в магазине) <code>GET /store/inventory</code>
+
+## :robot: Запуск тестов в Jenkins
+<a target="_blank" href="https://jenkins.autotests.cloud/job/Maria_Petstore_Autotest/">Сборка с параметрами в Jenkins</a>
+<p align="center">
+<img title="Jenkins Job Run with parameters" src="Images/Screenshots/Jenkins.png">
+</p>
